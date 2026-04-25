@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DUFF | Energía de Otra Galaxia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- VARIABLES INTERGALÁCTICAS --- */
+        :root {
+            --neon-green: #CCFF00;
+            --neon-magenta: #FF00FF;
+            --deep-base: #000000;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0; padding: 0; box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--deep-base);
+            /* Fondo Mesh Gradient Animado */
+            background-image: 
+                radial-gradient(at 10% 10%, rgba(255, 0, 255, 0.2) 0px, transparent 50%),
+                radial-gradient(at 90% 10%, rgba(204, 255, 0, 0.2) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(0, 255, 255, 0.15) 0px, transparent 70%);
+            background-size: 200% 200%;
+            animation: galaxyFlow 15s ease infinite alternate;
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+        }
+
+        @keyframes galaxyFlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            width: 100%;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--neon-green);
+            text-shadow: 0 0 15px var(--neon-green);
+        }
+
+        nav a {
+            color: #fff; text-decoration: none;
+            margin-left: 30px; font-weight: 700; font-size: 0.9rem;
+            transition: 0.3s; opacity: 0.7;
+        }
+
+        nav a:hover { opacity: 1; color: var(--neon-magenta); }
+
+        /* --- HERO --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+        }
+
+        .video-vertical-bg {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.5);
+        }
+
+        .hero-title {
+            font-size: 15vw;
+            font-family: 'Oswald', sans-serif;
+            background: linear-gradient(to bottom, #fff, rgba(255,255,255,0.1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .hero-tagline p {
+            letter-spacing: 10px;
+            font-weight: 900;
+            color: var(--neon-green);
+            text-transform: uppercase;
+        }
+
+        /* --- SABORES GRID --- */
+        .sabores {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 60px;
+            font-family: 'Oswald', sans-serif;
+            color: var(--neon-green);
+        }
+
+        .grid-sabores {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .card-sabor {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 40px 20px;
+            border-radius: 30px;
+            text-align: center;
+            transition: 0.4s;
+            overflow: visible; /* Importante para el Zoom */
+        }
+
+        .card-sabor:hover {
+            transform: translateY(-15px);
+            border-color: var(--neon-magenta);
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
+        }
+
+        .img-container {
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .lata-mini {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            cursor: zoom-in;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: float 4s infinite ease-in-out;
+        }
+
+        /* EFECO ZOOM */
+        .lata-mini.zoom {
+            transform: scale(1.8);
+            z-index: 5000;
+            position: relative;
+            cursor: zoom-out;
+            filter: drop-shadow(0 0 30px var(--neon-green));
+            animation: none; /* Detiene el flotado al hacer zoom */
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* --- STORY --- */
+        .story {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 10%;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .story-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .story-text h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--neon-green);
+        }
+
+        .video-box {
+            width: 500px;
+            height: 300px;
+            border-radius: 25px;
+            overflow: hidden;
+            border: 2px solid var(--neon-magenta);
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.3);
+        }
+
+        .video-box video {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+
+        /* --- CTA --- */
+        .cta-section {
+            padding: 80px;
+            text-align: center;
+        }
+
+        .btn-black {
+            background: var(--neon-green);
+            color: #000;
+            padding: 20px 60px;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-black:hover {
+            transform: scale(1.1);
+            background: #fff;
+            box-shadow: 0 0 40px #fff;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 50px;
+            text-align: center;
+            opacity: 0.5;
+            border-top: 1px solid var(--glass-border);
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">DUFF</div>
+        <nav>
+            <a href="#hero">INICIO</a>
+            <a href="#sabores">SABORES</a>
+            <a href="#historia">HISTORIA</a>
+            <a href="#comprar">COMPRAR</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <video autoplay muted loop playsinline class="video-vertical-bg">
+                <source src="video2.mp4" type="video/mp4">
+            </video>
+            <div class="hero-content">
+                <h1 class="hero-title">DUFF</h1>
+                <div class="hero-tagline">
+                    <p>VOLTAJE INTERGALÁCTICO</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sabores" class="sabores">
+            <h2 class="section-title">Escoge TU BEBIDA</h2>
+            <div class="grid-sabores">
+                <div class="card-sabor">
+                    <div class="img-container">
+                        <img src="img.jpeg" alt="DUFF Acid" class="lata-mini">
+                    </div>
+                    <h3>DUFF ACID</h3>
+                    <p>JESUS NUÑEZ</p>
+                </div>
+                <div class="card-sabor">
+                    <div class="img-container">
+                        <img src="img2.png" alt="DUFF Fury" class="lata-mini">
+                    </div>
+                    <h3>DUFF FURY</h3>
+                    <p>JESUS BALOCO</p>
+                </div>
+                <div class="card-sabor">
+                    <div class="img-container">
+                        <img src="IMG3.jpeg" alt="DUFF Zero" class="lata-mini">
+                    </div>
+                    <h3>DUFF ZERO</h3>
+                    <p>RICARDO ROJAS</p>
+                </div>
+                <div class="card-sabor">
+                    <div class="img-container">
+                        <img src="IMG4.png" alt="DUFF Max" class="lata-mini">
+                    </div>
+                    <h3>DUFF MAX</h3>
+                    <p>CHARLETH SOFIA</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="historia" class="story">
+            <div class="story-text">
+                <h2>No damos alas, damos voltaje.</h2>
+                <p>Duff nace como una propuesta visualmente fuerte y diferente dentro del mercado de bebidas energéticas. Su objetivo es representar a las personas que viven con intensidad, buscan destacar y necesitan energía para enfrentar cada reto del día.</p>
+            </div>
+            <div class="video-box">
+                <video autoplay muted loop playsinline>
+                    <source src="video.mp4" type="video/mp4">
+                </video>
+            </div>
+        </section>
+
+        <section id="comprar" class="cta-section">
+            <a href="#" class="btn-black">¡PÍLLALA YA!</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>DUFF ENERGY DRINK | DISEÑO POR JESU NÚÑEZ, JESUS BALOCO, RICARDO ROJA, CHARLETH SOFIA | 2026</p>
+    </footer>
+
+    <script>
+        const latas = document.querySelectorAll('.lata-mini');
+
+        latas.forEach(lata => {
+            lata.addEventListener('click', function(e) {
+                // Evita que el clic se propague
+                e.stopPropagation();
+                
+                // Quitamos el zoom a cualquier otra
+                latas.forEach(l => { 
+                    if(l !== this) l.classList.remove('zoom'); 
+                });
+                
+                // Toggle a la actual
+                this.classList.toggle('zoom');
+            });
+        });
+
+        // Cerrar zoom si se hace clic afuera
+        document.addEventListener('click', () => {
+            latas.forEach(l => l.classList.remove('zoom'));
+        });
+    </script>
+
+</body>
+</html>
